@@ -65,6 +65,7 @@
             <div id="gameTools"></div>
           </div>
           <div id="gameRight">
+            <button id="save" class="absolute top:0 right:0" disabled>Save</button>
           </div>
         </div>
       </div>
@@ -94,6 +95,38 @@
     <script src="scripts/music_maker.js"></script>
     <script src="scripts/main.js"></script>
     <script>
+      (function () {
+        let currentButton;
+        
+        function loadWorkspace(button) {
+          const workspace = Blockly.getMainWorkspace();
+          if (button.blocklySave) {
+          Blockly.serialization.workspaces.load(button.blocklySave, workspace);
+          } else {
+          workspace.clear();
+          }
+        }
+        
+        const toolbox = {
+          'kind': 'flyoutToolbox',
+          'contents': [
+          {
+            'kind': 'block',
+            'type': 'controls_repeat_ext',
+            'inputs': {
+            'TIMES': {
+              'shadow': {
+              'type': 'math_number',
+              'fields': {
+                'NUM': 5
+              }
+              }
+            }
+            }
+          }
+          ]
+        };
+      })();
       Blockly.inject('gameGame', {
         toolbox: toolbox,
         scrollbars: false,
