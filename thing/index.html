@@ -40,7 +40,8 @@
 
   <body onload="start()">
     <h1>Toolbox Customization Codelab</h1>
-    <div id="blocklyDiv"></div>
+    <div id="blocklyArea" style="height: 99%;"></div>
+    <div id="blocklyDiv" style="position:absolute"></div>
 
     <!-- Toolbox Definition -->
     <xml
@@ -394,5 +395,30 @@
         categorystyle="procedure_category"
         custom="PROCEDURE"></category>
     </xml>
+    <script>
+      const blocklyArea = document.getElementById('blocklyArea');
+      const blocklyDiv = document.getElementById('blocklyDiv');
+      const workspace = Blockly.inject(blocklyDiv,
+          {toolbox: document.getElementById('toolbox')});
+      const onresize = function(e) {
+        // Compute the absolute coordinates and dimensions of blocklyArea.
+        const element = blocklyArea;
+        let x = 0;
+        let y = 0;
+        do {
+          x += element.offsetLeft;
+          y += element.offsetTop;
+          element = element.offsetParent;
+        } while (element);
+        // Position blocklyDiv over blocklyArea.
+        blocklyDiv.style.left = x + 'px';
+        blocklyDiv.style.top = y + 'px';
+        blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+        blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+        Blockly.svgResize(workspace);
+      };
+      window.addEventListener('resize', onresize, false);
+      onresize();
+    </script>
   </body>
 </html>
