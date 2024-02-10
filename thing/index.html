@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>Toolbox Customization Codelab</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-    <script src="index.js"></script>
     <script src="custom_category_es6.js"></script>
     <script src="toolbox_label_es6.js"></script>
     <link rel="stylesheet" href="toolbox_style.css" />
@@ -399,7 +398,7 @@
       const blocklyArea = document.getElementById('blocklyArea');
       const blocklyDiv = document.getElementById('blocklyDiv');
       const workspace = Blockly.inject(blocklyDiv,
-          {toolbox: document.getElementById('toolbox')});
+          {toolbox: document.getElementById('toolbox-categories')});
       const onresize = function(e) {
         // Compute the absolute coordinates and dimensions of blocklyArea.
         const element = blocklyArea;
