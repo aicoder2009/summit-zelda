@@ -37,7 +37,7 @@
     </style>
   </head>
 
-  <body onload="start()">
+  <body>
     <h1>Toolbox Customization Codelab</h1>
     <div id="blocklyArea" style="height: 99%;"></div>
     <div id="blocklyDiv" style="position:absolute"></div>
@@ -395,13 +395,13 @@
         custom="PROCEDURE"></category>
     </xml>
     <script>
-      const blocklyArea = document.getElementById('blocklyArea');
-      const blocklyDiv = document.getElementById('blocklyDiv');
-      const workspace = Blockly.inject(blocklyDiv,
+      var blocklyArea = document.getElementById('blocklyArea');
+      var blocklyDiv = document.getElementById('blocklyDiv');
+      var workspace = Blockly.inject(blocklyDiv,
           {toolbox: document.getElementById('toolbox-categories')});
-      const onresize = function(e) {
+      var onresize = function(e) {
         // Compute the absolute coordinates and dimensions of blocklyArea.
-        const element = blocklyArea;
+        var element = blocklyArea;
         let x = 0;
         let y = 0;
         do {
