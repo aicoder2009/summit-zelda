@@ -141,7 +141,7 @@
               <block type="logic_operation"></block>
               <block type="logic_negate"></block>
               <block type="logic_boolean"></block>
-              <block type="forward"></block>
+              <block type="up"></block>
               <block type="logic_null" disabled="true"></block>
               <block type="logic_ternary"></block>
             </category>
@@ -339,13 +339,23 @@
         });
       }
 
-      Blockly.Blocks['forward'] = {
-        init: function() {
-          this.setColour(160);
-          this.setTooltip('zoom');
-        }
-      };
+      Blockly.Blocks['up'] = {
+      init: function() {
+        this.appendEndRowInput()
+            .appendField("up");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+      }
+    };
 
+    javascript.javascriptGenerator.forBlock['up'] = function(block, generator) {
+      // TODO: Assemble javascript into code variable.
+      var code = 'console.log("among us")';
+      return code;
+    };
     </script>
   </body>
 </html>
