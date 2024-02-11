@@ -970,7 +970,7 @@
           loadingBar.style.width = percents + "%";
         };
         const atlases = [
-          ["./img/a0.{webp,png}.6447abcfbc.json"]
+          ["./img/a0.{webp,png}.b3d1fbad4c.json"]
         ][0];
         const tiledImages = [
           {"ground":{"source":"./img/t0.ec7b60e44f.{webp,png}","shape":{"type":"rect","top":0,"bottom":64,"left":0,"right":64},"anchor":{"x":0,"y":0}}}
@@ -3948,7 +3948,8 @@ for (const layer of this.tileLayers) {
       
     },
     afterDraw() {
-      for (const p of pointer.down) {
+      keyboard.clear();
+for (const p of pointer.down) {
     p.xprev = p.x;
     p.yprev = p.y;
     p.xuiprev = p.x;
@@ -3963,7 +3964,6 @@ for (const p of pointer.hover) {
 inputs.registry['pointer.Wheel'] = 0;
 pointer.clearReleased();
 pointer.xmovement = pointer.ymovement = 0;
-keyboard.clear();
 
       if (this.behaviors.length) {
         runBehaviors(this, "rooms", "thisOnDraw");
@@ -4999,68 +4999,77 @@ templates.templates["link"] = {
 
 
 
-
-// if (actions.Horiz.down) {
-//     if (actions.Horiz.value > 0) {
-//         this.setTex("linkWalkRight");
-//     } else {
-//         this.setTex("linkWalkLeft");
-//     }
-//     this.hspeed = actions.Horiz.value*this.movespeed;
-//     this.play();
-// } else if (actions.Verti.down) {
-//     if (actions.Verti.value > 0) {
-//         this.setTex("linkWalkDown");
-//     } else {
-//         this.setTex("linkWalkUp");
-//     }
-//     this.vspeed = actions.Verti.value*this.movespeed;
-//     this.play();
-// } else {
-if (document.funkyFunction) {
-    var rockPoses = [];
-    for (var rock of templates.list['rock']) {
-        rockPoses.push({"x":rock.x, "y":rock.y});
+if (true) {
+    if (actions.Horiz.down) {
+        if (actions.Horiz.value > 0) {
+            this.setTex("linkWalkRight");
+        } else {
+            this.setTex("linkWalkLeft");
+        }
+        this.hspeed = actions.Horiz.value*this.movespeed;
+        this.play();
+    } else if (actions.Verti.down) {
+        if (actions.Verti.value > 0) {
+            this.setTex("linkWalkDown");
+        } else {
+            this.setTex("linkWalkUp");
+        }
+        this.vspeed = actions.Verti.value*this.movespeed;
+        this.play();
+    } else {
+        // Don't move horizontally if no input
+        this.stop();
     }
-
-    document.funkyFunction(this.x, this.y, rockPoses);
-}
-if (document.linkDir == "up") {
-    this.setTex("linkWalkUp");
-    this.vspeed = -1*this.movespeed;
-    this.play();
-} else if (document.linkDir == "down") {
-    this.setTex("linkWalkDown");
-    this.vspeed = 1*this.movespeed;
-    this.play();
-} else if (document.linkDir == "left") {
-    this.setTex("linkWalkLeft");
-    this.hspeed = -1*this.movespeed;
-    this.play();
-} else if (document.linkDir == "right") {
-    this.setTex("linkWalkRight");
-    this.hspeed = 1*this.movespeed;
-    this.play();
 } else {
-    // Don't move horizontally if no input
-    this.stop();
+    if (document.funkyFunction) {
+        var rockPoses = [];
+        for (var rock of templates.list['rock']) {
+            rockPoses.push({"x":rock.x, "y":rock.y});
+        }
+
+        document.funkyFunction(this.x, this.y, rockPoses);
+    }
+    if (document.linkDir == "up") {
+        this.setTex("linkWalkUp");
+        this.vspeed = -1*this.movespeed;
+        this.play();
+    } else if (document.linkDir == "down") {
+        this.setTex("linkWalkDown");
+        this.vspeed = 1*this.movespeed;
+        this.play();
+    } else if (document.linkDir == "left") {
+        this.setTex("linkWalkLeft");
+        this.hspeed = -1*this.movespeed;
+        this.play();
+    } else if (document.linkDir == "right") {
+        this.setTex("linkWalkRight");
+        this.hspeed = 1*this.movespeed;
+        this.play();
+    } else {
+        // Don't move horizontally if no input
+        this.stop();
+    }
 }
 
 this.moveSmart('solid');
 this.hspeed = 0;
 this.vspeed = 0;
+
+this.hurtTimer -=1 ;
 }
 /* template link — place_collisionCGroup (Collision with a group event) */
 {
     const other = place.occupied(this, 'Deadly');
     if (templates.valid(other)) {
-        this.x = this.savedX;
-this.y = this.savedY;
-this.hspeed = 0;
-this.vspeed = 0;
-rooms.current.lives -= 0.01;
-
-
+        if (this.hurtTimer <= 0) {
+    this.hurtTimer = this.hurtCooldown;
+    rooms.current.lives -= 1;
+    if (rooms.current.lives <= 0) {
+        document.resetLevel();
+    }
+    this.hspeed = 0;
+    this.vspeed = 0;
+}
 
     }
 }
@@ -5096,7 +5105,12 @@ this.savedY = this.y;
 
 this.movespeed = 250; // Max horizontal speed
 
-this.hurtCooldown = 300;
+this.hurtCooldown = 150;
+this.hurtTimer = 0;
+
+document.resetLevel = function () {
+    rooms.switch(rooms.current.name);
+}
 }
 
     },
@@ -5503,7 +5517,7 @@ this.direction = 0;
 {
 this.d = 0;
 
-this.speed = 300;
+this.speed = 450;
 }
 
     },
