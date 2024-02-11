@@ -627,17 +627,17 @@
         });
       }
       waitForCanvas().then((elm) => {
-        elm.onload=()=>{
-          console.log('Element is ready');
-          console.log(elm);
-          var aspect = elm.width/elm.height;
-          elm.style.top="";
-          elm.style.left="";
-          //assuming canvas width>height && window width>>height
-          var wLimit = gebi("gameRight").offsetWidth;
-          elm.style.width=(wLimit)+"px";
-          elm.style.height=(wLimit/aspect)+"px";
-        }
+        console.log('Element is ready');
+        console.log(elm);
+        var aspect = elm.width/elm.height;
+        console.log(aspect);
+        elm.style.top="";
+        elm.style.left="";
+        //assuming canvas width>height && window width>>height
+        var wLimit = gebi("gameRight").offsetWidth;
+        console.log(wLimit);
+        elm.style.width=(wLimit)+"px";
+        elm.style.height=(wLimit/aspect)+"px";
       });
       /*
       (async function(){
