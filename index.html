@@ -388,7 +388,8 @@
     const link = {};
     
     var dirs = ['up', 'down', 'left', 'right']
-    for (var dir of dirs){
+    for (var i=0;i<dirs.lenght;i++){ 
+      let dir = dirs[i];
       link[dir] = ( )=> {zelda.contentDocument.linkDir=dir};
       Blockly.Blocks[dir] = {
         init: function() {
