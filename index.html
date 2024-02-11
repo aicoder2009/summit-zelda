@@ -142,17 +142,19 @@
               <block type="logic_operation"></block>
               <block type="logic_negate"></block>
               <block type="logic_boolean"></block>
+              <block type="logic_null" disabled="true"></block>
+              <block type="logic_ternary"></block>
+            </category>
+            <category name="Legend of Zelda!" categorystyle="math_category">
               <block type="up"></block>
               <block type="down"></block>
               <block type="left"></block>
               <block type="right"></block>
-              <block type="logic_null" disabled="true"></block>
-              <block type="logic_ternary"></block>
-            </category>
-            <category name="Movement" categorystyle="math_category">
-              <block type="math_number" gap="32">
-                <field name="NUM">123</field>
-              </block>
+              
+              <block type="link.x"></block>
+              <block type="link.y"></block>
+              
+              <block type="rocks"></block>
             </category>
             <category name="Loops" categorystyle="loop_category">
               <block type="controls_repeat_ext">
@@ -342,6 +344,12 @@
           });
         });
       }
+
+    
+    zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
+      document.linkPos = {"x":x, "y":y};
+      document.rocks = rocks;
+    }
     
     ['up', 'down', 'left', 'right'].forEach(dir => {  
       Blockly.Blocks[dir] = {
@@ -361,7 +369,42 @@
         var code = 'zelda.contentDocument.linkDir="'+dir+'";';
         return code;
       };
-    })
+    });
+
+    ['x', 'y'].forEach(pos => {
+      Blockly.Blocks['link_'+pos] = {
+        init: function() {
+          this.appendEndRowInput()
+              .appendField("link."+pos);
+          this.setOutput(true, "Number");
+          this.setColour(300);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
+
+      javascript.javascriptGenerator.forBlock['link_'+pos] = function(block, generator) {
+        var code = 'return document.link.'+pos;
+        return [code, Blockly.javascript.ORDER_NONE];
+      };
+    });
+
+    Blockly.Blocks['rocks'] = {
+        init: function() {
+          this.appendEndRowInput()
+              .appendField("rocks");
+          this.setOutput(true, "Array");
+          this.setColour(45);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
+
+      javascript.javascriptGenerator.forBlock['rocks'] = function(block, generator) {
+        var code = 'return document.rocks';
+        return [code, Blockly.javascript.ORDER_NONE];
+      };
+    
     </script>
   </body>
 </html>
