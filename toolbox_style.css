@@ -6,16 +6,13 @@
 .blocklyToolboxContents {
   padding: 0.5em;
 }
-/* Adds padding around the group of categories and separators. */
-.blocklyToolboxCategory {
-  background-color: rgb(91, 91, 91);
-  border-radius:4px;
-}
+
 /* Adds space between the categories, rounds the corners and adds space around the label. */
 .blocklyTreeRow {
   padding: 3px;
   margin-bottom: 0.5em;
   border-radius: 4px;
+  background-color: rgb(91, 91, 91);
 }
 /* Changes color of the icon to white. */
 .customIcon {
