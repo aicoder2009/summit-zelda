@@ -384,16 +384,19 @@
       document.linkPos = {"x":x, "y":y};
       document.rocks = rocks;
     }
+
+    const link = {};
     
     var dirs = ['up', 'down', 'left', 'right']
     for (var dir of dirs){
+      link[dir] = ( )=> {zelda.contentDocument.linkDir=dir};
       Blockly.Blocks[dir] = {
         init: function() {
           this.appendEndRowInput()
               .appendField(dir);
           this.setPreviousStatement(true, null);
           this.setNextStatement(true, null);
-          this.setColour(230);
+          this.setColour(Math.random()*250);
           this.setTooltip("");
           this.setHelpUrl("");
         }
