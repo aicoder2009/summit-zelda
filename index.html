@@ -411,7 +411,8 @@
       };
     };
     var coords = ['x','y'];
-    for (var pos of coords){
+    for (var i=0;i<2;i++){
+      let pos = coords[i]+"";
       Blockly.Blocks['link_'+pos] = {
         init: function() {
           this.appendEndRowInput()
