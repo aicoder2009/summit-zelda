@@ -64,8 +64,8 @@
         </div>
       </div>
       <div id="game" style="display:none;width:100%;height:100%;">
-        <div id="gameLeft">
-          <div id="gameGame">
+        <div id="gameLeft" style="position:absolute;">
+          <div id="gameGame" style="position:absolute;">
             <div id="blocklyArea" style="height:75%;width:75%"></div>
             <div id="blocklyDiv" style="position:absolute;"></div>
           </div>
@@ -420,10 +420,10 @@
               categorystyle="procedure_category"
               custom="PROCEDURE"></category>
           </xml>
-          <div id="gameTools"></div>
+          <div id="gameTools" style="position:absolute;"></div>
         </div>
-        <div id="gameRight">
-          <button id="save" class="absolute top:0 right:0" disabled>Save</button>
+        <div id="gameRight" style="position:absolute;">
+          <button id="save" class="absolute top:10px; right:10px;" disabled>Save</button>
         </div>
       </div>
     </center>
