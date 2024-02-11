@@ -125,6 +125,7 @@
     <div id="game" style="display:none;width:100%;height:100%;">
       <div id="gameLeft" style="position:absolute;">
         <div id="gameGame" style="width:100%;position:absolute;">
+          <button onclick="eval(Blockly.JavaScript.workspaceToCode(workspace));"></button>
           <div id="blocklyArea" style="position:absolute;left:0;top:0;height:100%;width:100%"></div>
           <div id="blocklyDiv" style="position:absolute;"></div>
           <xml
@@ -142,6 +143,9 @@
               <block type="logic_negate"></block>
               <block type="logic_boolean"></block>
               <block type="up"></block>
+              <block type="down"></block>
+              <block type="left"></block>
+              <block type="right"></block>
               <block type="logic_null" disabled="true"></block>
               <block type="logic_ternary"></block>
             </category>
@@ -338,24 +342,26 @@
           });
         });
       }
+    
+    ['up', 'down', 'left', 'right'].forEach(dir => {  
+      Blockly.Blocks[dir] = {
+        init: function() {
+          this.appendEndRowInput()
+              .appendField(dir);
+          this.setPreviousStatement(true, null);
+          this.setNextStatement(true, null);
+          this.setColour(230);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
 
-      Blockly.Blocks['up'] = {
-      init: function() {
-        this.appendEndRowInput()
-            .appendField("up");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(230);
-        this.setTooltip("");
-        this.setHelpUrl("");
-      }
-    };
-
-    javascript.javascriptGenerator.forBlock['up'] = function(block, generator) {
-      // TODO: Assemble javascript into code variable.
-      var code = 'zelda.contentDocument.linkDir="up";';
-      return code;
-    };
+      javascript.javascriptGenerator.forBlock[dir] = function(block, generator) {
+        // TODO: Assemble javascript into code variable.
+        var code = 'zelda.contentDocument.linkDir="'+dir+'";';
+        return code;
+      };
+    })
     </script>
   </body>
 </html>
