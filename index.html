@@ -401,6 +401,7 @@
           this.setHelpUrl("");
         }
       }
+      console.log("added" + dir);
       javascript.javascriptGenerator.forBlock[dir] = function(block, generator) {
         // TODO: Assemble javascript into code variable.
         var code = 'zelda.contentDocument.linkDir="'+dir+'";';
