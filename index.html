@@ -547,6 +547,9 @@
         }
       }
       window.onresize=resize;
+      window.onload=function(){
+        resize();
+      }
       resize();
       gebi("menuPlay").addEventListener("click",function(){
         gebi("navbar").style.display="none";
