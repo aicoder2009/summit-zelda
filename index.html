@@ -136,6 +136,7 @@
               name="Logic"
               categorystyle="logic_category">
               <block type="controls_if"></block>
+              <block type="controls_ifelse"></block>
               <block type="logic_compare"></block>
               <block type="logic_operation"></block>
               <block type="logic_negate"></block>
@@ -378,6 +379,7 @@
           document.rocks = rocks;
           linkTick();
         }
+        zelda.contentDocument.resetLevel();
       })
       function linkTick() {
         eval(linkCode);
