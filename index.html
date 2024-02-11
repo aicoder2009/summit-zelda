@@ -390,15 +390,15 @@
     var dirs = ['up', 'down', 'left', 'right']
     for (var i=0;i<dirs.lenght;i++){ 
       let dir = dirs[i];
-      link[dir] = ( )=> {zelda.contentDocument.linkDir=dir};
-      Blockly.Blocks[dir] = {
+      link[dir+""] = ( )=> {zelda.contentDocument.linkDir=dir+""};
+      Blockly.Blocks[dir+""] = {
         init: function() {
           this.appendEndRowInput()
-              .appendField(dir);
+              .appendField(dir+"");
           this.setPreviousStatement(true, null);
           this.setNextStatement(true, null);
           this.setColour(Math.random()*250);
-          this.setTooltip(dir);
+          this.setTooltip(dir+"");
           this.setHelpUrl("");
         }
       }
