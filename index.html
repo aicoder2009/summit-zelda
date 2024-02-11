@@ -612,6 +612,10 @@
           });
         });
       }
+      waitForCanvas().then((elm) => {
+        console.log('Element is ready');
+        console.log(elm);
+      });
       (async function(){
         var canvas = await waitForCanvas()
         .then(function(){
