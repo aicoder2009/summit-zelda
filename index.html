@@ -413,18 +413,18 @@
     var coords = ['x','y'];
     for (var i=0;i<2;i++){
       let pos = coords[i]+"";
-      Blockly.Blocks['link_'+pos] = {
+      Blockly.Blocks['link_'+pos+""] = {
         init: function() {
           this.appendEndRowInput()
-              .appendField("link."+pos);
+              .appendField("link."+pos+"");
           this.setOutput(true, "Number");
           this.setColour(300);
           this.setTooltip("");
           this.setHelpUrl("");
         }
       };
-      javascript.javascriptGenerator.forBlock['link_'+pos] = function(block, generator) {
-        var code = 'return document.link.'+pos;
+      javascript.javascriptGenerator.forBlock['link_'+pos+""] = function(block, generator) {
+        var code = 'return document.link.'+pos+"";
         return [code, Blockly.javascript.ORDER_NONE];
       };
     };
