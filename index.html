@@ -601,7 +601,7 @@
           const observer = new MutationObserver(mutations => {
             if (gebi("ct").getElementsByTagName("canvas").length>0) {
               observer.disconnect();
-              resolve(gebi("ct").getElementsByTagName("canvas").length>0);
+              resolve(gebi("ct").getElementsByTagName("canvas")[0]);
             }
           });
   
@@ -615,7 +615,8 @@
       waitForCanvas().then((elm) => {
         console.log('Element is ready');
         console.log(elm);
-      });/*
+      });
+      /*
       (async function(){
         var canvas = await waitForCanvas()
         .then(function(){
