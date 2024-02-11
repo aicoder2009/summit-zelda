@@ -146,8 +146,8 @@
             <category name="Movement">
               <block type="up"></block>
               <block type="down"></block>
-              <block type="left"></block>
               <block type="right"></block>
+              <block type="left"></block>
             </category>
             <category name="Loops" categorystyle="loop_category">
               <block type="controls_repeat_ext">
@@ -385,7 +385,7 @@
       document.rocks = rocks;
     }
     
-    var dirs = ['up', 'down', 'left', 'right']
+    var dirs = ['up', 'down', 'right', 'left']
     for (var dir of dirs){
       Blockly.Blocks[dir] = {
         init: function() {
