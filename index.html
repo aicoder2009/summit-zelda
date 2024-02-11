@@ -301,20 +301,6 @@
           blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
           blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
           Blockly.svgResize(workspace);
-
-          waitForCanvas().then((elm) => {
-            console.log('Element is ready');
-            console.log(elm);
-            var aspect = elm.width/elm.height;
-            console.log(aspect);
-            elm.style.top="50%";
-            elm.style.left="50%";
-            //assuming canvas width>height && window width>>height
-            var wLimit = gebi("gameRight").offsetWidth;
-            console.log(wLimit);
-            elm.style.width=(wLimit)+"px";
-            elm.style.height=(wLimit/aspect)+"px";
-          });
         }
       }
       window.onresize=resize;
