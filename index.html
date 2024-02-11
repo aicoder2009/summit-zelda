@@ -196,7 +196,7 @@
         </div>
         <div id="gameTools" class="flex justify-center items-center" style="width:100%;position:absolute;">
           <button id="run" style="position:absolute;right:10px; width:15%; height:65%;" class="main">Run <font style="color:rgb(18, 172, 18)">></font></button>
-          <div class="sliderContainer" style="display: flex; gap: 5px;">
+          <div class="sliderContainer">
             <div class="paragraphContainer">
               <p class="sliderDescription">Blocks</p>
             </div>
@@ -206,6 +206,7 @@
             </label>
             <div class="paragraphContainer">
               <p class="sliderDescription">JS</p>
+            </div>
             </div>
           </div>
         </div>
@@ -262,7 +263,6 @@
     </style>
     <style>
       .sliderContainer{
-        position:relative;
         display:flex;
         flex-direction:row;
         justify-content:start;
@@ -308,11 +308,13 @@
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color:#056713;
+        background-color: #056713;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
       }
-      
       .sliderCheckBox:checked + .sliderSlider {
-        box-shadow: 0 0 1px #056713;
+        background-color: #056713;
       }
       .sliderCheckBox:checked + .sliderSlider:before {
         -webkit-transform: translateX(26px);
