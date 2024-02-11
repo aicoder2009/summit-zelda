@@ -287,7 +287,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #7cea78;
+        background-color: #b9b9b9;
         -webkit-transition: .4s;
         transition: .4s;
         border-radius: 34px;
@@ -370,13 +370,13 @@
       gebi("sliderCheckBox").addEventListener("click",function(){
         if (gebi("sliderCheckBox").checked){
           //display js
-          gebi("jsDiv").display="";
-          gebi("blocklyDiv").display="none";
+          gebi("jsDiv").style.display="";
+          gebi("blocklyDiv").style.display="none";
           gebi("jsDiv").innerHTML="";
           gebi("jsDiv").append(Blockly.JavaScript.workspaceToCode(workspace));
         }else{
-          gebi("jsDiv").display="none";
-          gebi("blocklyDiv").display="";
+          gebi("jsDiv").style.display="none";
+          gebi("blocklyDiv").style.display="";
         }
       })
     
