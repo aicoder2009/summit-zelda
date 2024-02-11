@@ -500,10 +500,6 @@
           </div>
         </div>
     </div>
-
-    <script src="pixi.js"></script>
-	
-	<script async src="ct.626d536b79.js"></script>
       
     </div>
     </font>
@@ -631,8 +627,17 @@
         });
       }
       waitForCanvas().then((elm) => {
-        console.log('Element is ready');
-        console.log(elm);
+        elem.onload=()=>{
+          console.log('Element is ready');
+          console.log(elm);
+          var aspect = elm.width/elm.height;
+          elm.style.top="";
+          elm.style.left="";
+          //assuming canvas width>height && window width>>height
+          var wLimit = gebi("gameRight").offsetWidth;
+          elm.style.width=(wLimit)+"px";
+          elm.style.height=(wLimit/aspect)+"px";
+        }
       });
       /*
       (async function(){
