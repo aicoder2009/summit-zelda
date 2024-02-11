@@ -148,8 +148,8 @@
             <category name="Movement">
               <block type="up"></block>
               <block type="down"></block>
-              <block type="left"></block>
               <block type="right"></block>
+              <block type="left"></block>
             </category>
             <category name="Loops" categorystyle="loop_category">
               <block type="controls_repeat_ext">
@@ -321,8 +321,8 @@
     for (var dir of dirs){
       Blockly.Blocks[dir] = {
         init: function() {
-          this.appendEndRowInput()
-              .appendField(dir);
+          this.appendEndRowInput();
+          this.appendField(dir);
           this.setPreviousStatement(true, null);
           this.setNextStatement(true, null);
           this.setColour(230);
@@ -341,8 +341,8 @@
     for (var pos of coords){
       Blockly.Blocks['link_'+pos] = {
         init: function() {
-          this.appendEndRowInput()
-              .appendField("link."+pos);
+          this.appendEndRowInput();
+          this.appendField("link."+pos);
           this.setOutput(true, "Number");
           this.setColour(300);
           this.setTooltip("");
@@ -358,8 +358,8 @@
 
     Blockly.Blocks['rocks'] = {
         init: function() {
-          this.appendEndRowInput()
-              .appendField("rocks");
+          this.appendEndRowInput();
+          this.appendField("rocks");
           this.setOutput(true, "Array");
           this.setColour(45);
           this.setTooltip("");
