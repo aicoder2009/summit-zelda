@@ -366,10 +366,15 @@
         gebi("game").style.display="";
         resize();
       })
+      var linkCode = "";
       gebi("run").addEventListener("click",function(){
         //do the javascript
-        eval(Blockly.JavaScript.workspaceToCode(workspace));
+        linkCode = Blockly.JavaScript.workspaceToCode(workspace);
       })
+      function linkTick() {
+        eval(linkCode);
+      }
+
       gebi("sliderCheckBox").addEventListener("click",function(){
         if (gebi("sliderCheckBox").checked){
           //display js
@@ -386,6 +391,7 @@
     zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
       document.linkPos = {"x":x, "y":y};
       document.rocks = rocks;
+      linkTick();
     }
 
     const link = {};
