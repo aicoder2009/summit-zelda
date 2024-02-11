@@ -38,7 +38,6 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Summit Zelda</title>
@@ -90,109 +89,6 @@
   
     <meta name="msapplication-TileColor" content="#446adb">
     <meta name="msapplication-TileImage" content="mstile-144x144.default.png">
-    <style>
-          <style>
-      .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      /* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffae00;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #0d5e00;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: rgb(255, 255, 255);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #056713;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #056713;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.sliderSlider {
-  border-radius: 34px;
-}
-
-.sliderSlider:before {
-  border-radius: 50%;
-};
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.sliderSlider {
-  border-radius: 34px;
-}
-
-.sliderSlider:before {
-  border-radius: 50%;
-}
-    </style>
-    </style>
-
   </head>
   <body>
     <!--navbar-->
@@ -283,7 +179,6 @@ input:checked + .slider:before {
               <block type="controls_flow_statements"></block>
             </category>
             <sep></sep>
-
             <category
               name="Variables"
               categorystyle="variable_category"
@@ -297,10 +192,21 @@ input:checked + .slider:before {
         </div>
         <div id="gameTools" class="flex justify-center items-center" style="width:100%;position:absolute;">
           <button id="run" style="position:absolute;right:10px; width:15%; height:65%;" class="main">Run <font style="color:rgb(18, 172, 18)">></font></button>
-          <div class="sliderContainer">
+          <div class="sliderContainer" style="display: flex; gap: 5px;">
             <div class="paragraphContainer">
               <p class="sliderDescription">Blocks</p>
             </div>
+
+    
+        
+          
+    
+
+        
+        Expand All
+    
+    @@ -207,6 +207,7 @@
+  
             <label class="sliderSwitch">
               <input type="checkbox" id="sliderCheckBox">
               <span class="sliderSlider"></span>
@@ -308,15 +214,30 @@ input:checked + .slider:before {
             <div class="paragraphContainer">
               <p class="sliderDescription">JS</p>
             </div>
-            </div>
           </div>
         </div>
       </div>
+
+    
+          
+            
+    
+
+          
+          Expand Down
+          
+            
+    
+
+          
+          Expand Up
+    
+    @@ -262,7 +263,6 @@
+  
     <div id="gameRight" style="position:absolute;top:0;">
         <!-- <button id="save" style="position:absolute; top:10px; right:10px;" disabled>Save</button> -->
         <iframe id="zelda" width="100%" height="100%" src="./game/index.html" title="e"></iframe> 
     </div>
-
     </div>
     </font>
     <style>
@@ -329,13 +250,13 @@ input:checked + .slider:before {
         margin-bottom:20px; /* NOTE this is gap betw buttons */
       }
       #menuPlay{
-        background-color:rgb(255, 162, 0);
+        background-color:rgb(54, 219, 54);
       }
       #menuPlay:disabled{
-        background-color:rgb(255, 237, 170);
+        background-color:rgb(170, 255, 170);
       }
       #menuPlay:hover{
-        background-color:rgb(239, 174, 54);
+        background-color:rgb(48, 194, 48);
       }
     </style>
     <style>
@@ -344,19 +265,16 @@ input:checked + .slider:before {
         height: 100%;
         scroll-behavior:smooth;
       }
-
       body {
         background-color: #fff;
         font-family: sans-serif;
         overflow: hidden;
       }
-
       #blocklyDiv {
         float: bottom;
         height: 90%;
         width: 100%;
       }
-
       #blocklyArea {
         width:100%;
         height:90%;
@@ -364,9 +282,27 @@ input:checked + .slider:before {
     </style>
     <style>
       .sliderContainer{
+        position:relative;
         display:flex;
         flex-direction:row;
         justify-content:start;
+
+    
+          
+            
+    
+
+          
+          Expand Down
+          
+            
+    
+
+          
+          Expand Up
+    
+    @@ -308,11 +308,13 @@
+  
         align-items:center;
       }
       .paragraphDescription{
@@ -409,13 +345,11 @@ input:checked + .slider:before {
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color: #056713;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 50%;
+        background-color:#056713;
       }
+
       .sliderCheckBox:checked + .sliderSlider {
-        background-color: #056713;
+        box-shadow: 0 0 1px #056713;
       }
       .sliderCheckBox:checked + .sliderSlider:before {
         -webkit-transform: translateX(26px);
@@ -445,7 +379,6 @@ input:checked + .slider:before {
           gebi("gameGame").style.height=(window.innerHeight*ySplit-2)+"px";
           gebi("gameTools").style.height=(window.innerHeight*(1-ySplit)-2)+"px";
           gebi("gameTools").style.top=(window.innerHeight*ySplit-2)+"px";
-
           /*var element = blocklyArea;
           let x = 0;
           let y = 0;
@@ -515,7 +448,6 @@ input:checked + .slider:before {
         return code;
       };
     };
-
     var coords = ['x','y'];
     for (var pos of coords){
       Blockly.Blocks['link_'+pos] = {
@@ -528,13 +460,11 @@ input:checked + .slider:before {
           this.setHelpUrl("");
         }
       };
-
       javascript.javascriptGenerator.forBlock['link_'+pos] = function(block, generator) {
         var code = 'return document.link.'+pos;
         return [code, Blockly.javascript.ORDER_NONE];
       };
     };
-
     Blockly.Blocks['rocks'] = {
         init: function() {
           this.appendEndRowInput()
@@ -545,7 +475,6 @@ input:checked + .slider:before {
           this.setHelpUrl("");
         }
       };
-
       javascript.javascriptGenerator.forBlock['rocks'] = function(block, generator) {
         var code = 'return document.rocks';
         return [code, Blockly.javascript.ORDER_NONE];
