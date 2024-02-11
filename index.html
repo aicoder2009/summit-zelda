@@ -389,12 +389,12 @@
         if (gebi("sliderCheckBox").checked){
           //display js
           gebi("jsDiv").display="";
-          gebi("blockyDiv").display="none";
+          gebi("blocklyDiv").display="none";
           gebi("jsDiv").innerHTML="";
           gebi("jsDiv").append(Blocky.JavaScript.workspaceToCode(workspace));
         }else{
           gebi("jsDiv").display="none";
-          gebi("blockyDiv").display="";
+          gebi("blocklyDiv").display="";
         }
       })
     
