@@ -500,9 +500,7 @@
           </div>
         </div>
     </div>
-    <script src="pixi.js"></script>
-	
-    <script async src="ct.626d536b79.js"></script>
+      
     </div>
     </font>
     <style>
@@ -594,6 +592,20 @@
           blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
           blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
           Blockly.svgResize(workspace);
+
+          waitForCanvas().then((elm) => {
+            console.log('Element is ready');
+            console.log(elm);
+            var aspect = elm.width/elm.height;
+            console.log(aspect);
+            elm.style.top="";
+            elm.style.left="";
+            //assuming canvas width>height && window width>>height
+            var wLimit = gebi("gameRight").offsetWidth;
+            console.log(wLimit);
+            elm.style.width=(wLimit)+"px";
+            elm.style.height=(wLimit/aspect)+"px";
+          });
         }
       }
       window.onresize=resize;
@@ -628,19 +640,6 @@
           });
         });
       }
-      waitForCanvas().then((elm) => {
-        console.log('Element is ready');
-        console.log(elm);
-        var aspect = elm.width/elm.height;
-        console.log(aspect);
-        elm.style.top="";
-        elm.style.left="";
-        //assuming canvas width>height && window width>>height
-        var wLimit = gebi("gameRight").offsetWidth;
-        console.log(wLimit);
-        elm.style.width=(wLimit)+"px";
-        elm.style.height=(wLimit/aspect)+"px";
-      });
       /*
       (async function(){
         var canvas = await waitForCanvas()
