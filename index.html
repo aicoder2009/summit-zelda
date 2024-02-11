@@ -193,10 +193,22 @@
           <p id="jsDiv" style="position:absolute;left:0;top:0;height:100%;width:100%;display:none;"></p>
         </div>
         <div id="gameTools" class="flex justify-center items-center" style="width:100%;position:absolute;">
-          <button id="run" class="main">Run <font style="color:rgb(18, 172, 18)">></font></button>
+          <button id="run" class="main">Run <font style="position:absolute;right:10px; color:rgb(18, 172, 18)">></font></button>
+          <div class="sliderContainer">
+            <div class="paragraphContainer">
+              <p class="sliderDescription">Blocks</p>
+            </div>
+            <label class="sliderSwitch">
+              <input type="checkbox" class="sliderCheckBox">
+              <span class="sliderSlider"></span>
+            </label>
+            <div class="paragraphContainer">
+              <p class="sliderDescription">JS</p>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
-    <script type="text/javascript" src="./sscd.min.js"></script>
     <div id="gameRight" style="position:absolute;">
         <!-- <button id="save" style="position:absolute; top:10px; right:10px;" disabled>Save</button> -->
         <iframe id="zelda" width="100%" height="100%" src="./game/index.html" title="e"></iframe> 
@@ -245,6 +257,68 @@
       #blockyArea {
         width:100%;
         height:90%;
+      }
+    </style>
+    <style>
+      .sliderContainer{
+        position:relative;
+        display:flex;
+        flex-direction:row;
+        justify-content:start;
+        align-items:center;
+      }
+      .paragraphDescription{
+        position:relative;
+      }
+      .sliderDescription{
+        font-size:20px;
+        margin:0;
+        padding:0;
+      }
+      .sliderSwitch {
+        position:relative;
+        display:inline-block;
+        width:60px;
+        height:34px;
+        margin-left:8px;
+        margin-right:8px;
+      }
+      .sliderSwitch input {
+        opacity:0;
+        width:0;
+        height:0;
+      }
+      .sliderSlider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 34px;
+      }
+      .sliderSlider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: rgb(151, 235, 147);
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
+      }
+      .sliderCheckBox:checked + #sliderSlider {
+        background-color: #a6d1f4;
+      }
+      .sliderCheckBox:checked + #sliderSlider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
       }
     </style>
     <script>
@@ -310,6 +384,18 @@
       gebi("run").addEventListener("click",function(){
         //do the javascript
         eval(Blockly.JavaScript.workspaceToCode(workspace));
+      })
+      gebi("sliderCheckBox").addEventListener("click",function(){
+        if (gebi("sliderCheckBox").checked){
+          //display js
+          gebi("jsDiv").display="";
+          gebi("blockyDiv").display="none";
+          gebi("jsDiv").innerHTML="";
+          gebi("jsDiv").append(Blocky.JavaScript.workspaceToCode(workspace));
+        }else{
+          gebi("jsDiv").display="none";
+          gebi("blockyDiv").display="";
+        }
       })
     
     zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
