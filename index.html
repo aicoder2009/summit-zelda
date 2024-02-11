@@ -391,9 +391,9 @@
         }
       })
     
-    zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
+    zelda.contentDocument.funkyFunction = function (x, y, rocks) {
       console.log(document.linkPos);
-      document.linkPos = {"x":x, "y":y};
+      document.link = {"x":x, "y":y};
       document.rocks = rocks;
       linkTick();
     }
