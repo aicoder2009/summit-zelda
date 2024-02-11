@@ -4999,7 +4999,7 @@ templates.templates["link"] = {
 
 
 
-if (true) {
+if (false) {
     if (actions.Horiz.down) {
         if (actions.Horiz.value > 0) {
             this.setTex("linkWalkRight");
