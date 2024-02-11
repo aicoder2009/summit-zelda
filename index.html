@@ -318,11 +318,11 @@
     }
     
     var dirs = ['up', 'down', 'left', 'right']
-    for (var dir of dirs){
-      Blockly.Blocks[dir] = {
+    for (var i=0;i<dirs.length;i++){
+      Blockly.Blocks[dirs[i]] = {
         init: function() {
-          this.appendEndRowInput();
-          this.appendField(dir);
+          this.appendEndRowInput()
+              .appendField(dirs[i]);
           this.setPreviousStatement(true, null);
           this.setNextStatement(true, null);
           this.setColour(230);
@@ -341,8 +341,8 @@
     for (var pos of coords){
       Blockly.Blocks['link_'+pos] = {
         init: function() {
-          this.appendEndRowInput();
-          this.appendField("link."+pos);
+          this.appendEndRowInput()
+              .appendField("link."+pos);
           this.setOutput(true, "Number");
           this.setColour(300);
           this.setTooltip("");
@@ -358,8 +358,8 @@
 
     Blockly.Blocks['rocks'] = {
         init: function() {
-          this.appendEndRowInput();
-          this.appendField("rocks");
+          this.appendEndRowInput()
+              .appendField("rocks");
           this.setOutput(true, "Array");
           this.setColour(45);
           this.setTooltip("");
