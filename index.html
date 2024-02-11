@@ -125,6 +125,7 @@
     <div id="game" style="display:none;width:100%;height:100%;">
       <div id="gameLeft" style="position:absolute;">
         <div id="gameGame" style="width:100%;position:absolute;">
+          <button onclick="eval(Blockly.JavaScript.workspaceToCode(workspace));"></button>
           <div id="blocklyArea" style="position:absolute;left:0;top:0;height:100%;width:100%"></div>
           <div id="blocklyDiv" style="position:absolute;"></div>
           <xml
@@ -141,7 +142,6 @@
               <block type="logic_operation"></block>
               <block type="logic_negate"></block>
               <block type="logic_boolean"></block>
-              <block type="up"></block>
               <block type="logic_null" disabled="true"></block>
               <block type="logic_ternary"></block>
             </category>
@@ -149,6 +149,15 @@
               <block type="math_number" gap="32">
                 <field name="NUM">123</field>
               </block>
+              <block type="up"></block>
+              <block type="down"></block>
+              <block type="left"></block>
+              <block type="right"></block>
+              
+              <!-- <block type="link_x"></block>
+              <block type="link_y"></block>
+              
+              <block type="rocks"></block> -->
             </category>
             <category name="Loops" categorystyle="loop_category">
               <block type="controls_repeat_ext">
@@ -198,7 +207,7 @@
     <script type="text/javascript" src="./sscd.min.js"></script>
     <div id="gameRight" style="position:absolute;">
         <!-- <button id="save" style="position:absolute; top:10px; right:10px;" disabled>Save</button> -->
-        <iframe width="100%" height="100%" src="./game/index.html" title="e"></iframe> 
+        <iframe id="zelda" width="100%" height="100%" src="./game/index.html" title="e"></iframe> 
     </div>
 
     </div>
@@ -341,23 +350,66 @@
         });
       }
 
-      Blockly.Blocks['up'] = {
-      init: function() {
-        this.appendEndRowInput()
-            .appendField("up");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(230);
-        this.setTooltip("");
-        this.setHelpUrl("");
-      }
-    };
+    
+    zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
+      document.linkPos = {"x":x, "y":y};
+      document.rocks = rocks;
+    }
+    
+    ['up', 'down', 'left', 'right'].forEach(dir => {  
+      Blockly.Blocks[dir] = {
+        init: function() {
+          this.appendEndRowInput()
+              .appendField(dir);
+          this.setPreviousStatement(true, null);
+          this.setNextStatement(true, null);
+          this.setColour(230);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
 
-    javascript.javascriptGenerator.forBlock['up'] = function(block, generator) {
-      // TODO: Assemble javascript into code variable.
-      var code = 'console.log("among us")';
-      return code;
-    };
+      javascript.javascriptGenerator.forBlock[dir] = function(block, generator) {
+        // TODO: Assemble javascript into code variable.
+        var code = 'zelda.contentDocument.linkDir="'+dir+'";';
+        return code;
+      };
+    });
+
+    ['x', 'y'].forEach(pos => {
+      Blockly.Blocks['link_'+pos] = {
+        init: function() {
+          this.appendEndRowInput()
+              .appendField("link."+pos);
+          this.setOutput(true, "Number");
+          this.setColour(300);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
+
+      javascript.javascriptGenerator.forBlock['link_'+pos] = function(block, generator) {
+        var code = 'return document.link.'+pos;
+        return [code, Blockly.javascript.ORDER_NONE];
+      };
+    });
+
+    Blockly.Blocks['rocks'] = {
+        init: function() {
+          this.appendEndRowInput()
+              .appendField("rocks");
+          this.setOutput(true, "Array");
+          this.setColour(45);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
+
+      javascript.javascriptGenerator.forBlock['rocks'] = function(block, generator) {
+        var code = 'return document.rocks';
+        return [code, Blockly.javascript.ORDER_NONE];
+      };
+    
     </script>
   </body>
 </html>
