@@ -9,6 +9,7 @@
 /* Adds padding around the group of categories and separators. */
 .blocklyToolboxCategory {
   background-color: rgb(91, 91, 91);
+  border-radius:4px;
 }
 /* Adds space between the categories, rounds the corners and adds space around the label. */
 .blocklyTreeRow {
