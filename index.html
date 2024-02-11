@@ -391,9 +391,9 @@
         }
       })
     
-    zelda.contentDocument.funkyFunction = function (x, y, rocks) {
+    zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
       console.log(document.linkPos);
-      document.link = {"x":x, "y":y};
+      document.linkPos = {"x":x, "y":y};
       document.rocks = rocks;
       linkTick();
     }
@@ -418,7 +418,7 @@
       console.log("added" + dir);
       javascript.javascriptGenerator.forBlock[dir] = function(block, generator) {
         // TODO: Assemble javascript into code variable.
-        var code = 'document.link.'+dir+'();';
+        var code = 'link.'+dir+'();';
         return code;
       };
     };
@@ -436,7 +436,7 @@
         }
       };
       javascript.javascriptGenerator.forBlock['link_'+pos+""] = function(block, generator) {
-        var code = 'document.link.'+pos+"";
+        var code = 'document.linkPos.'+pos+"";
         return [code, Blockly.JavaScript.ORDER_NONE];
       };
     };
