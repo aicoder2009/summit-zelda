@@ -108,8 +108,8 @@
     </center>
     <div id="game" style="display:none;width:100%;height:100%;">
       <div id="gameLeft" style="position:absolute;">
-        <div id="gameGame" style="position:absolute;">
-          <div id="blocklyArea" style="height:99%;width:95%"></div>
+        <div id="gameGame" style="width:100%;position:absolute;">
+          <div id="blocklyArea" style="position:absolute;left:0;top:0;height:99%;width:95%"></div>
           <div id="blocklyDiv" style="position:absolute;"></div>
           <xml
           xmlns="https://developers.google.com/blockly/xml"
@@ -462,9 +462,9 @@
               categorystyle="procedure_category"
               custom="PROCEDURE"></category>
           </xml>
-          <p id="jsDiv"></p>
+          <p id="jsDiv" style="position:absolute;left:0;top:0;height:100%;width:100%"></p>
         </div>
-        <div id="gameTools" style="position:absolute;"></div>
+        <div id="gameTools" style="width:100%;position:absolute;"></div>
       </div>
     <script type="text/javascript" src="./sscd.min.js"></script>
     <div id="gameRight" style="position:absolute;">
@@ -561,8 +561,6 @@
           var ySplit = 0.9;
           gebi("gameLeft").style.height=(window.innerHeight)+"px";
           gebi("gameRight").style.height=(window.innerHeight)+"px";
-          gebi("gameGame").style.width=(window.innerWidth)+"px";
-          gebi("gameTools").style.width=(window.innerWidth)+"px";
           gebi("gameGame").style.height=(window.innerHeight*ySplit-2)+"px";
           gebi("gameTools").style.height=(window.innerHeight*(1-ySplit)-2)+"px";
           gebi("gameTools").style.top=(window.innerHeight*ySplit-2)+"px";
