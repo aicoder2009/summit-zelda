@@ -606,6 +606,43 @@
         gebi("game").style.display="";
         resize();
       })
+      function waitForCanvas() {
+        return new Promise(resolve => {
+          if (gebi("ct").getElementsByTagName("canvas").length>0) {
+            return resolve(gebi("ct").getElementsByTagName("canvas")[0]);
+          }
+  
+          const observer = new MutationObserver(mutations => {
+            if (gebi("ct").getElementsByTagName("canvas").length>0) {
+              observer.disconnect();
+              resolve(gebi("ct").getElementsByTagName("canvas").length>0);
+            }
+          });
+  
+          // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });
+      }
+      waitForCanvas().then((elm) => {
+        console.log('Element is ready');
+        console.log(elm);
+      });/*
+      (async function(){
+        var canvas = await waitForCanvas()
+        .then(function(){
+          console.log(canvas)
+          var aspect = canvas.width/canvas.height;
+          canvas.style.top="";
+          canvas.style.left="";
+          //assuming canvas width>height && window width>>height
+          var wLimit = gebi("gameRight").offsetWidth;
+          canvas.style.width=(wLimit)+"px";
+          canvas.style.height=(wLimit/aspect)+"px";
+        })
+      })()*/
     </script>
   </body>
 </html>
