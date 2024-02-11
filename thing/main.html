@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>Toolbox Customization Codelab</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-    <script src="index.js"></script>
     <script src="custom_category_es6.js"></script>
     <script src="toolbox_label_es6.js"></script>
     <link rel="stylesheet" href="toolbox_style.css" />
@@ -24,23 +23,19 @@
         overflow: hidden;
       }
 
-      h1 {
-        font-weight: normal;
-        font-size: 140%;
-        margin: 10px;
-      }
-
       #blocklyDiv {
         float: bottom;
         height: 90%;
         width: 100%;
       }
+
     </style>
   </head>
 
-  <body onload="start()">
+  <body>
     <h1>Toolbox Customization Codelab</h1>
-    <div id="blocklyDiv"></div>
+    <div id="blocklyArea" style="height: 99%;"></div>
+    <div id="blocklyDiv" style="position:absolute"></div>
 
     <!-- Toolbox Definition -->
     <xml
@@ -394,5 +389,30 @@
         categorystyle="procedure_category"
         custom="PROCEDURE"></category>
     </xml>
+    <script>
+      var blocklyArea = document.getElementById('blocklyArea');
+      var blocklyDiv = document.getElementById('blocklyDiv');
+      var workspace = Blockly.inject(blocklyDiv,
+          {toolbox: document.getElementById('toolbox-categories')});
+      var onresize = function(e) {
+        // Compute the absolute coordinates and dimensions of blocklyArea.
+        var element = blocklyArea;
+        let x = 0;
+        let y = 0;
+        do {
+          x += element.offsetLeft;
+          y += element.offsetTop;
+          element = element.offsetParent;
+        } while (element);
+        // Position blocklyDiv over blocklyArea.
+        blocklyDiv.style.left = x + 'px';
+        blocklyDiv.style.top = y + 'px';
+        blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+        blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+        Blockly.svgResize(workspace);
+      };
+      window.addEventListener('resize', onresize, false);
+      onresize();
+    </script>
   </body>
 </html>
