@@ -329,27 +329,10 @@
         gebi("game").style.display="";
         resize();
       })
-      function waitForCanvas() {
-        return new Promise(resolve => {
-          if (gebi("ct").getElementsByTagName("canvas").length>0) {
-            return resolve(gebi("ct").getElementsByTagName("canvas")[0]);
-          }
-  
-          const observer = new MutationObserver(mutations => {
-            if (gebi("ct").getElementsByTagName("canvas").length>0) {
-              observer.disconnect();
-              resolve(gebi("ct").getElementsByTagName("canvas")[0]);
-            }
-          });
-  
-          // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
-          observer.observe(gebi("ct"), {
-            childList: true,
-            subtree: true
-          });
-        });
-      }
-
+      gebi("run").addEventListener("click",function(){
+        //do the javascript
+        eval(Blockly.JavaScript.workspaceToCode(workspace));
+      })
     
     zelda.contentDocument.funkyFunction = function j(x, y, rocks) {
       document.linkPos = {"x":x, "y":y};
