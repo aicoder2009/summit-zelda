@@ -514,6 +514,8 @@
           //small
         }else{
           //med + lg++
+          gebi("game").style.width=(window.innerWidth)+"px";
+          gebi("game").style.height=(window.innerHeight)+"px";
           var xSplit = 0.75;
           gebi("gameLeft").style.width=(window.innerWidth*xSplit-2)+"px";
           gebi("gameRight").style.width=(window.innerWidth*(1-xSplit)-2)+"px";
@@ -544,6 +546,7 @@
       gebi("menuPlay").addEventListener("click",function(){
         gebi("navbar").style.display="none";
         gebi("menu").style.display="none";
+        gebi("contentBox").style.display="none";
         gebi("game").style.display="";
       })
     </script>
