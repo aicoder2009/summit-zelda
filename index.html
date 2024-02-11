@@ -388,23 +388,24 @@
     const link = {};
     
     var dirs = ['up', 'down', 'left', 'right']
-    for (var dir of dirs){
-      link[dir] = ( )=> {zelda.contentDocument.linkDir=dir};
-      Blockly.Blocks[dir] = {
+    for (var i=0;i<dirs.length;i++){ 
+      let dir = dirs[i];
+      link[dir+""] = function( ) {zelda.contentDocument.linkDir=dir+""};
+      Blockly.Blocks[dir+""] = {
         init: function() {
           this.appendEndRowInput()
-              .appendField(dir);
+              .appendField(dir+"");
           this.setPreviousStatement(true, null);
           this.setNextStatement(true, null);
           this.setColour(Math.random()*250);
-          this.setTooltip(dir);
+          this.setTooltip(dir+"");
           this.setHelpUrl("");
         }
       }
       console.log("added" + dir);
       javascript.javascriptGenerator.forBlock[dir] = function(block, generator) {
         // TODO: Assemble javascript into code variable.
-        var code = 'zelda.contentDocument.linkDir="'+dir+'";';
+        var code = 'link.'+dir+'();';
         return code;
       };
     };
