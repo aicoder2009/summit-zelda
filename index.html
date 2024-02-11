@@ -137,10 +137,6 @@
               css-icon="customIcon fa fa-cog"
               name="Logic"
               categorystyle="logic_category">
-              <block type="up"></block>
-              <block type="down"></block>
-              <block type="left"></block>
-              <block type="right"></block>
               <block type="controls_if"></block>
               <block type="logic_compare"></block>
               <block type="logic_operation"></block>
@@ -150,9 +146,10 @@
               <block type="logic_ternary"></block>
             </category>
             <category name="Movement">
-              <block type="math_number" gap="32">
-                <field name="NUM">123</field>
-              </block>
+              <block type="up"></block>
+              <block type="down"></block>
+              <block type="left"></block>
+              <block type="right"></block>
             </category>
             <category name="Loops" categorystyle="loop_category">
               <block type="controls_repeat_ext">
@@ -340,7 +337,8 @@
       };
     };
 
-    ['x', 'y'].forEach(pos => {
+    var coords = ['x','y'];
+    for (var pos of coords){
       Blockly.Blocks['link_'+pos] = {
         init: function() {
           this.appendEndRowInput()
@@ -356,7 +354,7 @@
         var code = 'return document.link.'+pos;
         return [code, Blockly.javascript.ORDER_NONE];
       };
-    });
+    };
 
     Blockly.Blocks['rocks'] = {
         init: function() {
