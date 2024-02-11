@@ -435,7 +435,7 @@
         }
       };
       javascript.javascriptGenerator.forBlock['link_'+pos+""] = function(block, generator) {
-        var code = 'return document.link.'+pos+"";
+        var code = 'document.link.'+pos+"";
         return [code, Blockly.JavaScript.ORDER_NONE];
       };
     };
@@ -450,7 +450,7 @@
         }
       };
       javascript.javascriptGenerator.forBlock['rocks'] = function(block, generator) {
-        var code = 'return document.rocks';
+        var code = 'document.rocks';
         return [code, Blockly.JavaScript.ORDER_NONE];
       };
     
