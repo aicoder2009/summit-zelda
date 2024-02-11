@@ -111,7 +111,7 @@
     <div id="game" style="display:none;width:100%;height:100%;">
       <div id="gameLeft" style="position:absolute;">
         <div id="gameGame" style="width:100%;position:absolute;">
-          <div id="blocklyArea" style="position:absolute;left:0;top:0;height:99%;width:95%"></div>
+          <div id="blocklyArea" style="position:absolute;left:0;top:0;height:100%;width:100%"></div>
           <div id="blocklyDiv" style="position:absolute;"></div>
           <xml
           xmlns="https://developers.google.com/blockly/xml"
@@ -464,7 +464,7 @@
               categorystyle="procedure_category"
               custom="PROCEDURE"></category>
           </xml>
-          <p id="jsDiv" style="position:absolute;left:0;top:0;height:100%;width:100%"></p>
+          <p id="jsDiv" style="position:absolute;left:0;top:0;height:100%;width:100%;display:none;"></p>
         </div>
         <div id="gameTools" style="width:100%;position:absolute;"></div>
       </div>
@@ -486,9 +486,6 @@
           </div>
         </div>
     </div>
-    <script src="pixi.js"></script>
-
-    <script async src="ct.97ed4f1720.js"></script>
       
     </div>
     </font>
@@ -595,8 +592,6 @@
         gebi("game").style.display="";
         resize();
       })
-      var code = Blockly.JavaScript.workspaceToCode(workspace);
     </script>
-    
   </body>
 </html>
