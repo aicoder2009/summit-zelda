@@ -5000,26 +5000,26 @@ templates.templates["link"] = {
 
 
 if (false) {
-    if (actions.Horiz.down) {
-        if (actions.Horiz.value > 0) {
-            this.setTex("linkWalkRight");
-        } else {
-            this.setTex("linkWalkLeft");
-        }
-        this.hspeed = actions.Horiz.value*this.movespeed;
-        this.play();
-    } else if (actions.Verti.down) {
-        if (actions.Verti.value > 0) {
-            this.setTex("linkWalkDown");
-        } else {
-            this.setTex("linkWalkUp");
-        }
-        this.vspeed = actions.Verti.value*this.movespeed;
-        this.play();
-    } else {
-        // Don't move horizontally if no input
-        this.stop();
-    }
+    // if (actions.Horiz.down) {
+    //     if (actions.Horiz.value > 0) {
+    //         this.setTex("linkWalkRight");
+    //     } else {
+    //         this.setTex("linkWalkLeft");
+    //     }
+    //     this.hspeed = actions.Horiz.value*this.movespeed;
+    //     this.play();
+    // } else if (actions.Verti.down) {
+    //     if (actions.Verti.value > 0) {
+    //         this.setTex("linkWalkDown");
+    //     } else {
+    //         this.setTex("linkWalkUp");
+    //     }
+    //     this.vspeed = actions.Verti.value*this.movespeed;
+    //     this.play();
+    // } else {
+    //     // Don't move horizontally if no input
+    //     this.stop();
+    // }
 } else {
     if (document.funkyFunction) {
         var rockPoses = [];
